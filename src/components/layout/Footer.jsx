@@ -3,9 +3,9 @@
 import { Github, Linkedin, Mail } from 'lucide-react'
 
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com/yourusername', icon: Github },
-  { name: 'LinkedIn', href: 'https://linkedin.com/in/yourusername', icon: Linkedin },
-  { name: 'Email', href: 'mailto:your@email.com', icon: Mail },
+  { name: 'GitHub', href: 'https://github.com/Valeria1219', icon: Github },
+  { name: 'LinkedIn', href: 'www.linkedin.com/in/valéria-pusztai-varga-7b7312288', icon: Linkedin },
+  { name: 'Email', href: 'mailto:valeria.varga.erzsebet@gmail.com', icon: Mail },
 ]
 
 export default function Footer() {

@@ -3,6 +3,7 @@ import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import PostHogProvider from '@/components/PostHogProvider'
+import CookieBanner from '@/components/CookieBanner'
 
 const eczar = Eczar({
   subsets: ['latin'],
@@ -18,8 +19,15 @@ const firaMono = Fira_Mono({
 })
 
 export const metadata = {
-  title: 'Personal Website | Fantasy Portfolio',
+  title: 'Valeria Pusztai-Varga | Personal Website',
   description: 'A fantasy RPG-themed personal website featuring blog, portfolio, and experience sections.',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({ children }) {
@@ -34,6 +42,7 @@ export default function RootLayout({ children }) {
             </main>
             <Footer />
           </div>
+          <CookieBanner />
         </PostHogProvider>
       </body>
     </html>
