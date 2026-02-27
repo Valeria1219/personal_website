@@ -3,10 +3,16 @@
 import { ActivityIcon, CodeIcon, CogIcon, Sparkles, Terminal } from 'lucide-react'
 
 const skills = [
-  { name: 'Workflow Automation', level: 85, icon: CogIcon },
-  { name: 'Agentic AI', level: 80, icon: ActivityIcon },
-  { name: 'Software Engineering', level: 75, icon: CodeIcon },
+  { name: 'Workflow Architecture', level: 85, icon: CogIcon },
+  { name: 'AI Logic and Theory', level: 80, icon: ActivityIcon },
+  { name: 'Scripting', level: 75, icon: CodeIcon },
   { name: 'Advanced Problem Solving', level: 95, icon: Sparkles },
+]
+
+const inProgressSkills = [
+  { name: 'Python', level: 60, icon: CodeIcon },
+  { name: 'Workflow Automation', level: 70, icon: Terminal },
+  { name: 'AI Engineering', level: 65, icon: ActivityIcon },
 ]
 
 const stats = [
@@ -118,7 +124,7 @@ export default function About() {
                 Equipped Technologies
               </h4>
               <div className="flex flex-wrap gap-2">
-                {['n8n', 'React', 'Next.js', 'Bash', 'Python', 'OpenClaw', 'Airtable', 'Notion', 'Confluence'].map((tech) => (
+                {['n8n', 'JS', 'React', 'Docker', 'Bash', 'OpenClaw', 'Airtable', 'Notion', 'Confluence'].map((tech) => (
                   <span
                     key={tech}
                     className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20"
@@ -126,6 +132,43 @@ export default function About() {
                     {tech}
                   </span>
                 ))}
+              </div>
+            </div>
+
+            {/* Skills in Training */}
+            <div className="pt-6">
+              <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-accent-foreground" />
+                Skills in Training
+              </h4>
+              <div className="space-y-3">
+                {inProgressSkills.map((skill) => {
+                  const Icon = skill.icon
+                  return (
+                    <div
+                      key={skill.name}
+                      className="space-y-2"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <Icon className="w-4 h-4 text-accent-foreground" />
+                          <span className="text-sm font-medium text-foreground">
+                            {skill.name}
+                          </span>
+                        </div>
+                        <span className="text-xs text-muted-foreground">
+                          Leveling up...
+                        </span>
+                      </div>
+                      <div className="h-2 rounded-full bg-secondary overflow-hidden">
+                        <div
+                          style={{ width: `${skill.level}%` }}
+                          className="h-full bg-yellow-600/70 rounded-full animate-pulse"
+                        />
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
