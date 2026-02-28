@@ -19,7 +19,9 @@ dist
 # Misc
 .DS_Store
 *.pem
+
 Thumbs.db
+plans
 
 # Debug
 npm-debug.log*
