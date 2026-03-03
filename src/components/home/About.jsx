@@ -132,7 +132,7 @@ export default function About() {
                   <p className="text-muted-foreground">
                     Welcome, adventurer! You've stumbled upon a rare waypoint: Based in a small village in Hungary, at a place that is truly out of a storybook, is where our scene takes place. The hero spends half of her day navigating the country-side life, and the other exploring the tech-world. 
                     Trying to be a girl who has automated her life in a village to be as efficient as a Silicon Valley startup, so she has more time to spend in the garden in overalls and boots.
-                    My life is a blend between a sci-fi movie with self-hosted tools, AI agents and trying to keep the traditions of our grandparents alive, while fighting the slugs eating my tomatoes. 
+                    My life is a blend between a sci-fi movie with self-hosted tools, AI agents while fighting the slugs eating my tomatoes. 
 
                   </p>
                   <p className="text-muted-foreground mt-4">
