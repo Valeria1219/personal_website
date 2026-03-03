@@ -1,8 +1,23 @@
 import { createClient } from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url'
 
+// DEBUG: Log environment variables during build
+console.log('[DEBUG Sanity Config] NODE_ENV:', process.env.NODE_ENV)
+console.log('[DEBUG Sanity Config] NEXT_PUBLIC_SANITY_PROJECT_ID:', process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'UNDEFINED')
+console.log('[DEBUG Sanity Config] NEXT_PUBLIC_SANITY_DATASET:', process.env.NEXT_PUBLIC_SANITY_DATASET || 'UNDEFINED (will default to production)')
+
+// Validate required environment variables
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+if (!projectId) {
+  throw new Error(
+    'VERCEL DEPLOYMENT ERROR: Missing required environment variable "NEXT_PUBLIC_SANITY_PROJECT_ID".\n' +
+    'Please add it in your Vercel dashboard: Project Settings → Environment Variables\n' +
+    'Your Sanity Project ID can be found at: https://www.sanity.io/manage'
+  )
+}
+
 export const config = {
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  projectId: projectId,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   apiVersion: '2024-01-01',
   useCdn: false, // Disable CDN for instant updates
