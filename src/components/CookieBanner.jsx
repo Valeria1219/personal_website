@@ -26,8 +26,8 @@ export default function CookieBanner() {
   if (!isVisible) return null
 
   return (
-    <div className="fixed bottom-5 right-5 max-w-80 bg-[var(--header-bg)] border-2 border-[var(--header-border)] rounded p-4 shadow-lg z-[1000] animate-slide-in">
-      <div className="flex flex-col gap-3">
+    <div className="fixed bottom-0 left-0 right-0 sm:bottom-5 sm:left-auto sm:right-5 sm:max-w-sm bg-[var(--header-bg)] border-t-2 sm:border-2 border-[var(--header-border)] sm:rounded-lg p-4 shadow-lg z-[1000] animate-slide-in">
+      <div className="flex flex-col gap-3 max-w-7xl mx-auto sm:max-w-none">
         <p className="text-sm text-[var(--header-nav-text)] leading-relaxed">
           This site uses PostHog for analytics to improve your experience.{' '}
           <Link 
@@ -37,16 +37,16 @@ export default function CookieBanner() {
             Learn more
           </Link>
         </p>
-        <div className="flex gap-2 justify-end">
+        <div className="flex gap-2 justify-end sm:justify-end">
           <button
             onClick={handleDecline}
-            className="px-3 py-1.5 text-sm border border-[var(--header-border)] rounded text-[var(--header-nav-text)] hover:bg-[var(--header-button-bg)] transition-colors"
+            className="px-4 py-2 text-sm border border-[var(--header-border)] rounded text-[var(--header-nav-text)] hover:bg-[var(--header-button-bg)] transition-colors flex-1 sm:flex-none"
           >
             Decline
           </button>
           <button
             onClick={handleAccept}
-            className="px-3 py-1.5 text-sm bg-[var(--header-button-hover)] text-[var(--header-logo-text)] rounded font-medium hover:opacity-90 transition-opacity"
+            className="px-4 py-2 text-sm bg-[var(--header-button-hover)] text-[var(--header-logo-text)] rounded font-medium hover:opacity-90 transition-opacity flex-1 sm:flex-none"
           >
             Accept
           </button>

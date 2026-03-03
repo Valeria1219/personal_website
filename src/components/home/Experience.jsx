@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Calendar, Star, Zap, Shield, Sword, Users, Wrench } from 'lucide-react'
 import ExperienceModal from './ExperienceModal'
 
@@ -9,6 +10,54 @@ const iconMap = {
   Zap,
   Shield,
   Sword,
+}
+
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const headerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+}
+
+const timelineItemLeftVariants = {
+  hidden: { opacity: 0, x: -40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+}
+
+const timelineItemRightVariants = {
+  hidden: { opacity: 0, x: 40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
 }
 
 export default function Experience({ initialExperiences }) {
@@ -28,22 +77,37 @@ export default function Experience({ initialExperiences }) {
       <section id="experience" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-secondary/30">
         <div className="mx-auto max-w-7xl">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <motion.div 
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+          >
+            <motion.h2 
+              className="text-3xl sm:text-4xl font-bold text-foreground mb-4"
+              variants={headerVariants}
+            >
               Quest <span className="text-primary">Log</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            </motion.h2>
+            <motion.p 
+              className="text-muted-foreground max-w-2xl mx-auto"
+              variants={headerVariants}
+            >
               A chronicle of my professional adventures and the skills acquired along the way
-            </p>
+            </motion.p>
             
             {/* Total XP Badge */}
-            <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+            <motion.div 
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20"
+              variants={headerVariants}
+            >
               <Star className="w-5 h-5 text-primary" />
               <span className="text-sm font-medium text-primary">
                 Total XP: {totalXP.toLocaleString()}
               </span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Experience Timeline */}
           <div className="relative">
@@ -57,19 +121,27 @@ export default function Experience({ initialExperiences }) {
                 const isEven = index % 2 === 0
                 
                 return (
-                  <div
+                  <motion.div
                     key={exp._id || exp.id}
                     className={`relative flex flex-col md:flex-row gap-4 md:gap-8 ${
                       isEven ? 'md:flex-row-reverse' : ''
                     }`}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={isEven ? timelineItemRightVariants : timelineItemLeftVariants}
                   >
                     {/* Timeline Node */}
-                    <div className="absolute left-4 md:left-1/2 w-8 h-8 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center z-10">
+                    <div 
+                      className="absolute left-4 md:left-1/2 w-8 h-8 -translate-x-1/2 rounded-full bg-background border-2 border-primary flex items-center justify-center z-10"
+                    >
                       <Icon className="w-4 h-4 text-primary" />
                     </div>
 
                     {/* Content Card */}
-                    <div className={`flex-1 pl-12 md:pl-0 ${isEven ? 'md:pr-12' : 'md:pl-12'}`}>
+                    <div 
+                      className={`flex-1 pl-12 md:pl-0 ${isEven ? 'md:pr-12' : 'md:pl-12'}`}
+                    >
                       <div 
                         onClick={() => handleViewDetails(exp)}
                         className="relative p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-colors group cursor-pointer"
@@ -170,7 +242,7 @@ export default function Experience({ initialExperiences }) {
 
                     {/* Empty space for alternating layout */}
                     <div className="hidden md:block flex-1" />
-                  </div>
+                  </motion.div>
                 )
               })}
             </div>

@@ -4,7 +4,7 @@ import { Github, Linkedin, Mail } from 'lucide-react'
 
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/Valeria1219', icon: Github },
-  { name: 'LinkedIn', href: 'www.linkedin.com/in/valéria-pusztai-varga-7b7312288', icon: Linkedin },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/valéria-pusztai-varga-7b7312288', icon: Linkedin },
   { name: 'Email', href: 'mailto:valeria.varga.erzsebet@gmail.com', icon: Mail },
 ]
 
@@ -12,7 +12,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-header-border bg-header-bg">
+    <footer className="border-t border-header-border bg-header-bg pb-20 sm:pb-6">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-4">
 

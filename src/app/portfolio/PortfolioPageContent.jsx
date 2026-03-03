@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Trophy, FolderOpen } from 'lucide-react'
+import { FolderOpen } from 'lucide-react'
 import PortfolioCard from '@/components/portfolio/PortfolioCard'
 
 export default function PortfolioPageContent({ initialProjects }) {
@@ -23,7 +23,7 @@ export default function PortfolioPageContent({ initialProjects }) {
             className="text-center"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-              <Trophy className="w-5 h-5 text-primary" />
+              <FolderOpen className="w-5 h-5 text-primary" />
               <span className="text-sm font-medium text-primary">Side-quests</span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
@@ -44,7 +44,7 @@ export default function PortfolioPageContent({ initialProjects }) {
             animate={{ opacity: 1 }}
             className="text-center"
           >
-            <Trophy className="w-16 h-16 text-muted-foreground/50 mx-auto mb-4" />
+            <FolderOpen className="w-16 h-16 text-muted-foreground/50 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-foreground mb-2">
               No projects yet
             </h3>
@@ -65,7 +65,7 @@ export default function PortfolioPageContent({ initialProjects }) {
               viewport={{ once: true }}
               className="flex items-center gap-2 mb-8"
             >
-              <Trophy className="w-5 h-5 text-primary" />
+              <FolderOpen className="w-5 h-5 text-primary" />
               <h2 className="text-2xl font-bold text-foreground">Featured Projects</h2>
             </motion.div>
             <div className="grid md:grid-cols-2 gap-6">
