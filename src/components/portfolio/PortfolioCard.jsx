@@ -39,28 +39,30 @@ export default function PortfolioCard({ project, index }) {
             {/* Quick Links Overlay */}
             <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
               {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
+                <button
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    window.open(project.liveUrl, '_blank', 'noopener,noreferrer')
+                  }}
                   className="p-2 rounded-lg bg-background/80 backdrop-blur-sm hover:bg-primary hover:text-primary-foreground transition-colors"
                   aria-label="View live site"
                 >
                   <ExternalLink className="w-4 h-4" />
-                </a>
+                </button>
               )}
               {project.repoUrl && (
-                <a
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
+                <button
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    window.open(project.repoUrl, '_blank', 'noopener,noreferrer')
+                  }}
                   className="p-2 rounded-lg bg-background/80 backdrop-blur-sm hover:bg-primary hover:text-primary-foreground transition-colors"
                   aria-label="View repository"
                 >
                   <Github className="w-4 h-4" />
-                </a>
+                </button>
               )}
             </div>
           </div>

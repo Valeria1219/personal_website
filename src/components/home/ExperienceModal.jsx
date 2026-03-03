@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Calendar, ExternalLink, Star } from 'lucide-react'
 import {
   Dialog,
@@ -35,11 +36,12 @@ export default function ExperienceModal({ experience, open, onOpenChange }) {
           <div className="flex items-start gap-4">
             {/* Company Logo */}
             {experience.logo && (
-              <div className="w-16 h-16 rounded-lg overflow-hidden border border-border flex-shrink-0">
-                <img
+              <div className="w-16 h-16 rounded-lg overflow-hidden border border-border flex-shrink-0 relative">
+                <Image
                   src={urlFor(experience.logo).width(64).height(64).url()}
                   alt={experience.company}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             )}

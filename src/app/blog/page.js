@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import { client, postsQuery, categoriesQuery } from '@/lib/sanity'
 import BlogPageContent from './BlogPageContent.jsx'
 

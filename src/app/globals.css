@@ -47,7 +47,6 @@
     --header-button-bg: rgb(70, 73, 57);
     --header-button-text: rgb(200, 195, 180);
     --header-button-hover: rgb(120, 115, 80);
-    --header-focus: rgb(200, 190, 140);
     --font-sans: Eczar, ui-serif, serif;
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: Fira Mono, ui-monospace, monospace;
@@ -78,17 +77,6 @@
     @apply bg-background text-foreground;
     letter-spacing: var(--tracking-normal);
   }
-}
-
-/* Custom pixel-art styles */
-.pixel-border {
-  border-image: url('/pixel-art/Clouds/Clouds.png') 2 fill;
-  image-rendering: pixelated;
-}
-
-.pixelated {
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
 }
 
 /* Fantasy glow effects */
@@ -130,28 +118,6 @@
   100% {
     transform: translateX(100%);
   }
-}
-
-/* Scroll animations */
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Parallax container */
-.parallax-container {
-  perspective: 1000px;
-  overflow: hidden;
-}
-
-.parallax-layer {
-  will-change: transform;
 }
 
 /* Cookie banner animation */

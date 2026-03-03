@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react'
 import { client, postQuery, postsQuery } from '@/lib/sanity'
 import { urlFor } from '@/lib/sanity'
@@ -138,10 +139,13 @@ export default async function BlogPostPage({ params }) {
       {post.coverImage && (
         <section className="py-8 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
-            <img
+            <Image
               src={urlFor(post.coverImage).width(1200).height(630).url()}
               alt={post.title}
+              width={1200}
+              height={630}
               className="w-full rounded-xl border border-border"
+              priority
             />
           </div>
         </section>

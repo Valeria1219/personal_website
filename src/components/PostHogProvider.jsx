@@ -27,7 +27,7 @@ export default function PHProvider({ children }) {
     // Listen for storage changes (in case consent changes in another tab)
     const handleStorageChange = (e) => {
       if (e.key === 'cookie-consent') {
-        if (e.newValue === 'accepted' && typeof window !== 'undefined') {
+        if (e.newValue === 'accepted') {
           posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
             api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
             opt_in_site_apps: true
