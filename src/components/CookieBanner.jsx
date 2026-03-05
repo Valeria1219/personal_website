@@ -7,21 +7,15 @@ export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const consent = localStorage.getItem('cookie-consent')
-    if (!consent) {
+    // Show banner only once per session
+    const dismissed = sessionStorage.getItem('cookie-banner-dismissed')
+    if (!dismissed) {
       setIsVisible(true)
     }
   }, [])
 
-  const handleAccept = () => {
-    localStorage.setItem('cookie-consent', 'accepted')
-    window.dispatchEvent(new CustomEvent('cookie-consent-change', { detail: { consent: 'accepted' } }))
-    setIsVisible(false)
-  }
-
-  const handleDecline = () => {
-    localStorage.setItem('cookie-consent', 'declined')
-    window.dispatchEvent(new CustomEvent('cookie-consent-change', { detail: { consent: 'declined' } }))
+  const handleDismiss = () => {
+    sessionStorage.setItem('cookie-banner-dismissed', 'true')
     setIsVisible(false)
   }
 
@@ -39,18 +33,12 @@ export default function CookieBanner() {
             Learn more
           </Link>
         </p>
-        <div className="flex gap-2 justify-end sm:justify-end">
+        <div className="flex justify-end">
           <button
-            onClick={handleDecline}
-            className="px-4 py-2 text-sm border border-[var(--header-border)] rounded text-[var(--header-nav-text)] hover:bg-[var(--header-button-bg)] transition-colors flex-1 sm:flex-none"
+            onClick={handleDismiss}
+            className="px-4 py-2 text-sm bg-[var(--header-button-hover)] text-[var(--header-logo-text)] rounded font-medium hover:opacity-90 transition-opacity"
           >
-            Decline
-          </button>
-          <button
-            onClick={handleAccept}
-            className="px-4 py-2 text-sm bg-[var(--header-button-hover)] text-[var(--header-logo-text)] rounded font-medium hover:opacity-90 transition-opacity flex-1 sm:flex-none"
-          >
-            Accept
+            Got it
           </button>
         </div>
       </div>
