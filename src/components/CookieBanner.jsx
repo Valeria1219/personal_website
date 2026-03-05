@@ -15,11 +15,13 @@ export default function CookieBanner() {
 
   const handleAccept = () => {
     localStorage.setItem('cookie-consent', 'accepted')
+    window.dispatchEvent(new CustomEvent('cookie-consent-change', { detail: { consent: 'accepted' } }))
     setIsVisible(false)
   }
 
   const handleDecline = () => {
     localStorage.setItem('cookie-consent', 'declined')
+    window.dispatchEvent(new CustomEvent('cookie-consent-change', { detail: { consent: 'declined' } }))
     setIsVisible(false)
   }
 
