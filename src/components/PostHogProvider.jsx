@@ -1,24 +1,16 @@
 'use client'
 
 import posthog from 'posthog-js'
-import { PostHogProvider } from 'posthog-js/react'
-import { useEffect, useState } from 'react'
+import { PostHogProvider as PHProvider } from 'posthog-js/react'
+import { useConsent } from './ConsentProvider'
 
-export default function PHProvider({ children }) {
-  const [isInitialized, setIsInitialized] = useState(false)
+export default function PostHogProvider({ children }) {
+  const { isPostHogInitialized } = useConsent()
 
-  useEffect(() => {
-    // Always initialize PostHog
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
-      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-      opt_in_site_apps: true
-    })
-    setIsInitialized(true)
-  }, [])
-
-  if (!isInitialized) {
-    return <>{children}</>
+  // Only wrap with PostHogProvider if initialized
+  if (typeof window !== 'undefined' && isPostHogInitialized && posthog.__loaded) {
+    return <PHProvider client={posthog}>{children}</PHProvider>
   }
 
-  return <PostHogProvider client={posthog}>{children}</PostHogProvider>
+  return <>{children}</>
 }

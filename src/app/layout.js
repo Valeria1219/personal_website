@@ -2,6 +2,7 @@ import { Eczar, Fira_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import ConsentProvider from '@/components/ConsentProvider'
 import PostHogProvider from '@/components/PostHogProvider'
 import CookieBanner from '@/components/CookieBanner'
 
@@ -34,16 +35,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${eczar.variable} ${firaMono.variable} font-sans antialiased`}>
-        <PostHogProvider>
-          <div className="relative min-h-screen flex flex-col">
-            <Header />
-            <main className="flex-1">
-              {children}
-            </main>
-            <Footer />
-          </div>
-          <CookieBanner />
-        </PostHogProvider>
+        <ConsentProvider>
+          <PostHogProvider>
+            <div className="relative min-h-screen flex flex-col">
+              <Header />
+              <main className="flex-1">
+                {children}
+              </main>
+              <Footer />
+            </div>
+            <CookieBanner />
+          </PostHogProvider>
+        </ConsentProvider>
       </body>
     </html>
   )
