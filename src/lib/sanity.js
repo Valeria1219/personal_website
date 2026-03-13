@@ -1,11 +1,6 @@
 import { createClient } from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url'
 
-// DEBUG: Log environment variables during build
-console.log('[DEBUG Sanity Config] NODE_ENV:', process.env.NODE_ENV)
-console.log('[DEBUG Sanity Config] NEXT_PUBLIC_SANITY_PROJECT_ID:', process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'UNDEFINED')
-console.log('[DEBUG Sanity Config] NEXT_PUBLIC_SANITY_DATASET:', process.env.NEXT_PUBLIC_SANITY_DATASET || 'UNDEFINED (will default to production)')
-
 // Validate required environment variables
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 if (!projectId) {
